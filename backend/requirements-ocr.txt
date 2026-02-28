@@ -1,0 +1,9 @@
+# OCR uses EasyOCR (included in main requirements.txt).
+# pip install easyocr  # first run downloads English model (~100MB).
+# No separate binary required; works on Windows/Linux/Mac.
+[pytest]
+asyncio_mode = auto
+testpaths = tests
+python_files = test_*.py
+python_classes = Test*
+python_functions = test_*

@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* SBDT Logistics theme – teal/slate with amber accents */
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 215 25% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 12%;
+
+    --primary: 173 58% 30%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 220 14% 94%;
+    --secondary-foreground: 215 25% 12%;
+
+    --muted: 220 14% 94%;
+    --muted-foreground: 215 10% 42%;
+
+    --accent: 38 92% 50%;
+    --accent-foreground: 215 25% 12%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 173 58% 30%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 215 28% 8%;
+    --foreground: 210 20% 96%;
+    --card: 215 24% 10%;
+    --card-foreground: 210 20% 96%;
+    --popover: 215 28% 8%;
+    --popover-foreground: 210 20% 96%;
+    --primary: 173 50% 42%;
+    --primary-foreground: 215 25% 8%;
+    --secondary: 215 20% 16%;
+    --secondary-foreground: 210 20% 96%;
+    --muted: 215 18% 16%;
+    --muted-foreground: 210 12% 58%;
+    --accent: 38 92% 48%;
+    --accent-foreground: 215 25% 8%;
+    --destructive: 0 55% 40%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 215 18% 18%;
+    --input: 215 18% 18%;
+    --ring: 173 50% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body {
+    @apply bg-background text-foreground antialiased font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    pointer-events: auto;
+  }
+
+  #root {
+    pointer-events: auto;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full hover:bg-muted-foreground/30 transition-colors;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-background/80 backdrop-blur-md border border-border;
+  }
+
+  .glass-card {
+    @apply bg-card border border-border shadow;
+  }
+
+  .btn-premium {
+    @apply bg-primary text-primary-foreground hover:opacity-90 transition-opacity;
+  }
+
+  .nav-item-active {
+    @apply bg-primary/10 text-primary border-r-2 border-primary;
+  }
+
+  .text-gradient {
+    @apply text-primary;
+  }
+
+  .card-premium {
+    @apply transition-shadow duration-200 hover:shadow-md;
+  }
+}
+
+/* Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Manager dashboard hero – force dark background and light text so it’s always visible */
+.hero-slider-manager {
+  background-color: #0f172a !important;
+  background-image: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, rgba(20, 83, 75, 0.35) 100%) !important;
+}
+.hero-slider-manager .hero-slider-badge,
+.hero-slider-manager h2 {
+  color: #ffffff !important;
+}
+.hero-slider-manager .hero-slider-teal {
+  color: #2dd4bf !important;
+}
+.hero-slider-manager .hero-slider-desc {
+  color: #e2e8f0 !important;
+}
+
+/* Print: show only the LR PDF iframe (no popup needed) */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #pdf-frame,
+  #pdf-frame * {
+    visibility: visible !important;
+  }
+  #pdf-frame {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: none !important;
+    border: none !important;
+  }
+}
