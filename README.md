@@ -276,8 +276,6 @@ UPLOAD_DIR=uploads
 
 ## 📄 License
 
-[Your License Here]
+Kiran 
 
-## 👥 Contributors
 
-[Your Name/Team]
